@@ -1,8 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input";
+import Image from 'next/image';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface CulturalRelic {
   名称: string;
@@ -17,6 +18,8 @@ interface CulturalRelic {
 export function CulturalRelicsSearchComponent() {
   const [relics, setRelics] = useState<CulturalRelic[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [randomImage, setRandomImage] = useState('');
+
 
   useEffect(() => {
     // In a real application, you would fetch data from an API here
@@ -32,6 +35,9 @@ export function CulturalRelicsSearchComponent() {
     };
 
     fetchData();
+    const images = ['a.png', 'b.png', 'c.png'];
+    const randomIndex = Math.floor(Math.random() * images.length);
+    setRandomImage(images[randomIndex]);
   }, []);
 
   const filteredRelics = relics.filter(relic =>
@@ -43,7 +49,10 @@ export function CulturalRelicsSearchComponent() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">禁止出境展览文物搜索</h1>
+      <div className="flex items-center mb-4">
+      <Image src={`/assets/search/${randomImage}`} alt="Logo" width={36} height={36} />
+      <h1 className="text-2xl font-bold">禁止出境展览文物</h1>
+      </div>
       <Input
         type="text"
         placeholder="搜索文物名称、时代、出土地点或现藏地点..."
