@@ -51,7 +51,7 @@ export function CulturalRelicsSearchComponent() {
     <div className="container mx-auto p-4">
       <div className="flex items-center mb-4">
       <Image src={`/assets/search/${randomImage}`} alt="Logo" width={36} height={36} />
-      <h1 className="text-2xl font-bold">禁止出境展览文物</h1>
+      <h1 className="text-2xl font-bold ml-2">禁止出境展览文物</h1>
       </div>
       <Input
         type="text"
